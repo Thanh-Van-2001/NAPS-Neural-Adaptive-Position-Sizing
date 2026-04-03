@@ -1,0 +1,66 @@
+# ---------- Python ----------
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+*.egg
+*.whl
+
+# ---------- Virtual environments ----------
+.venv/
+venv/
+env/
+ENV/
+
+# ---------- IDE ----------
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# ---------- Testing / Coverage ----------
+.pytest_cache/
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
+
+# ---------- Linters / Type checkers ----------
+.mypy_cache/
+.ruff_cache/
+
+# ---------- PyTorch ----------
+*.pt
+*.pth
+*.ckpt
+checkpoints/
+runs/
+lightning_logs/
+
+# ---------- Data ----------
+data/raw/
+data/processed/
+*.csv
+*.parquet
+*.h5
+*.hdf5
+*.feather
+*.pkl
+*.pickle
+
+# ---------- Results / Figures ----------
+results/*.json
+results/*.csv
+figures/*.png
+figures/*.pdf
+
+# ---------- System ----------
+.DS_Store
+Thumbs.db
+*.log
+
+# ---------- Jupyter ----------
+.ipynb_checkpoints/

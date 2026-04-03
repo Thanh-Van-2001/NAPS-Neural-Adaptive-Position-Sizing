@@ -1,0 +1,61 @@
+# =============================================================================
+# NAPS: Neural Adaptive Position Sizing — Default Configuration
+# Paper: "Neural Adaptive Position Sizing for Systematic Trading" (NeurIPS 2026)
+# All hyperparameters match Table 1 of the paper.
+# =============================================================================
+
+# ---------------------------------------------------------------------------
+# Model architecture (Section 3.2, Figure 2)
+# ---------------------------------------------------------------------------
+model:
+  d_model: 64          # Hidden dimension throughout the model
+  n_heads: 4           # Attention heads (Transformer + cross-attention)
+  n_layers: 2          # Transformer encoder layers
+  lookback: 60         # Trading days in the input window
+  n_features: 20       # Features per day (5 OHLCV + 15 technicals)
+  dropout: 0.1         # Dropout probability
+
+# ---------------------------------------------------------------------------
+# f_max — asset-class-dependent maximum bet fraction (Table 2)
+# ---------------------------------------------------------------------------
+f_max:
+  equities: 0.40
+  crypto: 0.25
+  forex: 0.30
+
+# ---------------------------------------------------------------------------
+# Training (Section 3.3)
+# ---------------------------------------------------------------------------
+training:
+  lr: 1.0e-4           # Initial learning rate (Adam)
+  lr_min: 1.0e-6       # Minimum learning rate (cosine annealing floor)
+  batch_size: 32       # Mini-batch size
+  epochs: 100          # Maximum training epochs per fold
+  W: 252               # Window length for loss normalisation (1 trading year)
+
+# ---------------------------------------------------------------------------
+# Composite loss (Section 3.3, Eq. 5-7)
+# ---------------------------------------------------------------------------
+loss:
+  lambda1: 5.0         # Drawdown penalty weight
+  lambda2: 1.0         # Turnover regularisation weight
+  tau: 0.15            # Maximum drawdown threshold (15%)
+  cost_bps: 10         # One-way transaction cost in basis points
+
+# ---------------------------------------------------------------------------
+# LSTM signal model (Section 4.2)
+# ---------------------------------------------------------------------------
+signal:
+  lstm_hidden: 128     # LSTM hidden dimension
+  lstm_layers: 2       # Number of stacked LSTM layers
+  lstm_dropout: 0.2    # Dropout between LSTM layers
+  mc_passes: 20        # MC-dropout forward passes (K)
+  mc_dropout: 0.2      # MC-dropout probability
+
+# ---------------------------------------------------------------------------
+# Walk-forward evaluation (Section 3.4)
+# ---------------------------------------------------------------------------
+walk_forward:
+  initial_train: 252   # Initial training window (1 year)
+  step_size: 63        # Expansion step (1 quarter)
+  test_size: 63        # Out-of-sample test window (1 quarter)
