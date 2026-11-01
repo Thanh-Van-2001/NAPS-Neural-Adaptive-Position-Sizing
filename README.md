@@ -1,6 +1,6 @@
 # NAPS: Neural Adaptive Position Sizing for Risk-Aware Algorithmic Trading
 
-**NeurIPS 2026**
+**Preprint (2026)**
 
 > Position sizing -- deciding *how much* to allocate to each trade -- is a
 > critical yet under-studied component of systematic trading strategies.
@@ -183,11 +183,11 @@ pytest tests/test_model.py -v
 ## Citation
 
 ```bibtex
-@inproceedings{naps2026,
-  title     = {Neural Adaptive Position Sizing for Risk-Aware Algorithmic Trading},
-  author    = {NAPS Authors},
-  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
-  year      = {2026},
+@misc{naps2026,
+  title  = {Neural Adaptive Position Sizing for Risk-Aware Algorithmic Trading},
+  author = {NAPS Authors},
+  year   = {2026},
+  note   = {Preprint},
 }
 ```
 
